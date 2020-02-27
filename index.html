@@ -1,31 +1,19 @@
 <!DOCTYPE html>
-<html>
-<title>LittaPanda</title>
-<body>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '795762810834615',
-        xfbml      : true,
-        version    : 'v6.0'
-      });
-      FB.AppEvents.logPageView();
-    };
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "https://connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-  </script>
-<h1>Hello</h1>
-<div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ideasteck 3D Experience</title>
+  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/jeromeetienne/AR.js/1.7.5/aframe/build/aframe-ar.js"></script>
+</head>
+<body style="margin : 0; overflow: hidden;">
+<a-scene  embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+  <a-marker type="pattern" preset="custom" url="patterns/pattern.patt">
+    <!--a-box position="0 0.5 0" material="color: yellow;"></a-box-->
+    <a-entity obj-model="obj: url(models/taza.obj); mtl: url(models/taza.mtl)">
+    </a-entity>
+  </a-marker>
+  <a-entity camera></a-entity>
+</a-scene>
 </body>
 </html>
