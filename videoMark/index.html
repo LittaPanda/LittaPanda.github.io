@@ -27,17 +27,17 @@
     AFRAME.registerComponent('vidhandler', {
         init: function () {
             this.toggle = false;
-            document.querySelector("#vid").pause(); //reference to the video
+            document.querySelector("#world-vid").pause(); //reference to the video
         },
         tick:function(){
             if(document.querySelector("a-marker").object3D.visible === true){
                 if(!this.toggle){
                     this.toggle = true;
-                    document.querySelector("#vid").play();
+                    document.querySelector("#world-vid").play();
                 }
             }else{
                 this.toggle = false;
-                document.querySelector("#vid").pause();
+                document.querySelector("#world-vid").pause();
             }
         }
     });
