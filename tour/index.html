@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Ideasteck 3D Experience</title>
+    <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe-master.min.js"></script>
+</head>
+<body style="margin : 0; overflow: hidden;">
+<a-assets>
+    <video id="world-vid" src="https://krpano.com/krpanocloud/webvr/video/video-1920x960.mp4" crossorigin="anonymous">
+    </video>
+</a-assets>
+<a-scene>
+    <a-sky rotation="0 -90 0" src="#world-vid"></a-sky>
+</a-scene>
+<script>
+    window.addEventListener('click', function () {
+        const v = document.querySelector('#world-vid');
+        v.play();
+    });
+</script>
+</body>
+</html>
