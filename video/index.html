@@ -12,7 +12,7 @@
 <a-scene embedded
          arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <a-assets>
-        <video id="penguin-sledding" autoplay loop="true" src="example.mp4"></video>
+        <video id="penguin-sledding" autoplay muted loop="true" src="example.mp4" crossorigin="anonymous"></video>
     </a-assets>
     <a-video src="#penguin-sledding" width="16" height="9" position="0 0 -20"></a-video>
     <a-entity camera></a-entity>
