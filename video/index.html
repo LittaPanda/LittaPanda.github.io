@@ -12,14 +12,10 @@
 <a-scene embedded
          arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <a-assets>
-        <a-asset-item id="senior" src="models/BoxAnimated.gltf"></a-asset-item>
+        <video id="penguin-sledding" autoplay loop="true" src="../assets/example.mp4"></video>
     </a-assets>
-    <a-marker type="pattern" preset="custom" url="patterns/pattern.patt">
-        <!--a-box position="0 0.5 0" material="color: yellow;"></a-box-->
-        <!--a-entity position="0 0.5 0" obj-model="obj: url(models/taza.obj); mtl: url(models/taza.mtl)">
-        </a-entity-->
-        <!--a-entity rotation="-90 0 0" position="0 0 1" gltf-model="#senior" animation-mixer="clip: defaultScene;"></a-entity-->
-        <a-entity rotation="0 0 -4" position="0 0 0" gltf-model="#senior" animation-mixer></a-entity>
+    <a-marker type="pattern" preset="custom" url="../patterns/pattern.patt">
+        <a-video src="#penguin-sledding" width="16" height="9" position="0 0 -20"></a-video>
     </a-marker>
     <a-entity camera></a-entity>
 </a-scene>
