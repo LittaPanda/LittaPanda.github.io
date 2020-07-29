@@ -5,39 +5,38 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Ideasteck 3D Experience</title>
     <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/jeromeetienne/AR.js/1.7.5/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
 </head>
 <body style="margin : 0; overflow: hidden;">
 <a-scene embedded
          arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <a-assets>
-        <video id="world-vid" autoplay muted loop="true" src="alpha_maker.webp" crossorigin="anonymous" webkit-playsinline></video>
+        <video id="world-vid" autoplay="true" muted="true" loop="true" src="example.mp4" crossorigin="anonymous"></video>
+        <video id="alpha" autoplay="true" muted="true" loop="true" src="bulb.mp4" crossorigin="anonymous"></video>
     </a-assets>
     <a-marker type="pattern" preset="custom" url="pattern.patt">
-        <a-video vidhandler src="#world-vid" width="16" height="9" position="0 0.2 0" rotation="90 180 0"></a-video>
+        <!--a-video vidhandler src="#world-vid" width="1.6" height=".9" position="0 2 0" rotation="90 180 0"></a-video-->
+        <a-video vidhandler class="video" width="1.6" height=".9" position="0 2 0" rotation="90 180 0" material="shader: chromakey; src: #alpha; color: 0.1 0.9 0.2" webkit-playsinline playsinline></a-video>
     </a-marker>
     <a-entity camera></a-entity>
 </a-scene>
 <script>
-    window.addEventListener('click', function () {
-        const v = document.querySelector('#world-vid');
-        v.play();
-    });
     AFRAME.registerComponent('vidhandler', {
         init: function () {
             this.toggle = false;
-            document.querySelector("#world-vid").pause(); //reference to the video
+            document.querySelector("#alpha").pause(); //reference to the video
         },
         tick:function(){
             if(document.querySelector("a-marker").object3D.visible === true){
                 if(!this.toggle){
                     this.toggle = true;
-                    document.querySelector("#world-vid").play();
+                    document.querySelector("#alpha").play();
                 }
             }else{
                 this.toggle = false;
-                document.querySelector("#world-vid").pause();
+                document.querySelector("#alpha").pause();
             }
         }
     });
