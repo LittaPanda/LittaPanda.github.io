@@ -14,13 +14,32 @@
     <a-assets>
         <video id="world-vid" autoplay muted loop="true" src="example.mp4" crossorigin="anonymous"></video>
     </a-assets>
-    <a-video src="#world-vid" width="16" height="9" position="0 0 -20"></a-video>
+    <a-marker type="pattern" preset="custom" url="pattern.patt">
+        <a-video src="#world-vid" width="16" height="9" position="0 0 -20"></a-video>
+    </a-marker>
     <a-entity camera></a-entity>
 </a-scene>
 <script>
     window.addEventListener('click', function () {
         const v = document.querySelector('#world-vid');
         v.play();
+    });
+    AFRAME.registerComponent('vidhandler', {
+        init: function () {
+            this.toggle = false;
+            document.querySelector("#vid").pause(); //reference to the video
+        },
+        tick:function(){
+            if(document.querySelector("a-marker").object3D.visible === true){
+                if(!this.toggle){
+                    this.toggle = true;
+                    document.querySelector("#vid").play();
+                }
+            }else{
+                this.toggle = false;
+                document.querySelector("#vid").pause();
+            }
+        }
     });
 </script>
 </body>
