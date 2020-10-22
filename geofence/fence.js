@@ -19,10 +19,10 @@
             distance = calculateDistance(startPosLat, startPosLong,position.coords.latitude, position.coords.longitude)
             $("#distance").text(distance);
 
-            if(distance < 0.01){
-              $("#message").text("Yes, were inside 10 M!!! :) A+")
-            }else if(distance > 0.01){
-              $("#message").text("No, not inside 10 M :(")
+            if(distance < 0.05){
+              $("#message").text("Yes, were inside 50 M!!! :) A+")
+            }else if(distance > 0.05){
+              $("#message").text("No, not inside 50 M :(")
             }
           });
         }
